@@ -1,0 +1,44 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="6">
+            <item index="0" class="java.lang.String" itemvalue="checked{%" />
+            <item index="1" class="java.lang.String" itemvalue="{%" />
+            <item index="2" class="java.lang.String" itemvalue="u.sex" />
+            <item index="3" class="java.lang.String" itemvalue="%}" />
+            <item index="4" class="java.lang.String" itemvalue="end" />
+            <item index="5" class="java.lang.String" itemvalue="1" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="16">
+            <item index="0" class="java.lang.String" itemvalue="werkzeug" />
+            <item index="1" class="java.lang.String" itemvalue="tornado" />
+            <item index="2" class="java.lang.String" itemvalue="sockjs-tornado" />
+            <item index="3" class="java.lang.String" itemvalue="wtforms" />
+            <item index="4" class="java.lang.String" itemvalue="mysql-connector-python" />
+            <item index="5" class="java.lang.String" itemvalue="sqlalchemy" />
+            <item index="6" class="java.lang.String" itemvalue="redis" />
+            <item index="7" class="java.lang.String" itemvalue="tqdm" />
+            <item index="8" class="java.lang.String" itemvalue="hnswlib" />
+            <item index="9" class="java.lang.String" itemvalue="imageio" />
+            <item index="10" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="11" class="java.lang.String" itemvalue="pillow" />
+            <item index="12" class="java.lang.String" itemvalue="imagehash" />
+            <item index="13" class="java.lang.String" itemvalue="torch" />
+            <item index="14" class="java.lang.String" itemvalue="numpy" />
+            <item index="15" class="java.lang.String" itemvalue="torchvision" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

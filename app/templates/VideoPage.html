@@ -1,0 +1,694 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Askbootstrap">
+      <meta name="author" content="Askbootstrap">
+      <title>VIDOE - Video Streaming Website HTML Template</title>
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" href="img/favicon.png">
+      <!-- Bootstrap core CSS-->
+      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Custom fonts for this template-->
+      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <!-- Custom styles for this template-->
+      <link href="css/osahan.css" rel="stylesheet">
+      <!-- Owl Carousel -->
+      <link rel="stylesheet" href="vendor/owl-carousel/owl.carousel.css">
+      <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css">
+      <!-- 引入jQuery库 -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <style>
+          .form-control {
+              display: flex;
+          }
+
+          .form-control input[type="text"] {
+              flex: 1;
+          }
+
+          .form-control input[type="submit"] {
+              margin-left: 10px; /* 调整按钮与输入框之间的间距 */
+          }
+      </style>
+
+   </head>
+   <body id="page-top">
+      <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
+         &nbsp;&nbsp;
+         <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
+         <i class="fas fa-bars"></i>
+         </button> &nbsp;&nbsp;
+         <a class="navbar-brand mr-1" href="/index"><img class="img-fluid" alt="" src="img/logo.png"></a>
+         <!-- Navbar Search -->
+         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
+            <div class="input-group">
+               <input type="text" class="form-control" placeholder="Search for...">
+               <div class="input-group-append">
+                  <button class="btn btn-light" type="button">
+                  <i class="fas fa-search"></i>
+                  </button>
+               </div>
+            </div>
+         </form>
+         <!-- Navbar -->
+         <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
+            <li class="nav-item mx-1">
+               <a class="nav-link" href="/upload">
+               <i class="fas fa-plus-circle fa-fw"></i>
+               Upload Video
+               </a>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-bell fa-fw"></i>
+               <span class="badge badge-danger">9+</span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; Something else here</a>
+               </div>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-envelope fa-fw"></i>
+               <span class="badge badge-success">7</span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-edit "></i> &nbsp; Action</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star "></i> &nbsp; Something else here</a>
+               </div>
+            </li>
+            <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
+               <a class="nav-link dropdown-toggle user-dropdown-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <img alt="Avatar" src="{{ user[0]['avatar'] }}">
+               {{ user[0]['username'] }}
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="/account"><i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account</a>
+                  <a class="dropdown-item" href="/subscriptions"><i class="fas fa-fw fa-video"></i> &nbsp; Subscriptions</a>
+                  <a class="dropdown-item" href="/settings"><i class="fas fa-fw fa-cog"></i> &nbsp; Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-fw fa-sign-out-alt"></i> &nbsp; Logout</a>
+               </div>
+            </li>
+         </ul>
+      </nav>
+      <div id="wrapper">
+         <!-- Sidebar -->
+         <ul class="sidebar navbar-nav">
+            <li class="nav-item active">
+               <a class="nav-link" href="/index">
+               <i class="fas fa-fw fa-home"></i>
+               <span>Home</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/channels">
+               <i class="fas fa-fw fa-users"></i>
+               <span>Channels</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/SingleChannel">
+               <i class="fas fa-fw fa-user-alt"></i>
+               <span>Single Channel</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/VideoPage">
+               <i class="fas fa-fw fa-video"></i>
+               <span>Video Page</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/UploadVideo">
+               <i class="fas fa-fw fa-cloud-upload-alt"></i>
+               <span>Upload Video</span>
+               </a>
+            </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-fw fa-folder"></i>
+               <span>Pages</span>
+               </a>
+               <div class="dropdown-menu">
+                  <h6 class="dropdown-header">Login Screens:</h6>
+                  <a class="dropdown-item" href="/login">Login</a>
+                  <a class="dropdown-item" href="/register">Register</a>
+                  <a class="dropdown-item" href="/ForgotPassword">Forgot Password</a>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">Other Pages:</h6>
+                  <a class="dropdown-item" href="/blog">Blog</a>
+                  <a class="dropdown-item" href="/BlogDetail">Blog Detail</a>
+                  <a class="dropdown-item" href="/blank">Blank Page</a>
+                  <a class="dropdown-item" href="/error">404 Page</a>
+                  <a class="dropdown-item" href="/contact">Contact</a>
+               </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/HistoryPage">
+               <i class="fas fa-fw fa-history"></i>
+               <span>History Page</span>
+               </a>
+            </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-fw fa-list-alt"></i>
+               <span>Categories</span>
+               </a>
+               <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/categories">Movie</a>
+                  <a class="dropdown-item" href="/categories">Music</a>
+                  <a class="dropdown-item" href="/categories">Television</a>
+               </div>
+            </li>
+            <li class="nav-item channel-sidebar-list">
+               <h6>SUBSCRIPTIONS</h6>
+               <ul>
+                  <li>
+                     <a href="/subscriptions">
+                     <img class="img-fluid" alt="" src="img/s1.png"> Your Life
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/subscriptions">
+                     <img class="img-fluid" alt="" src="img/s2.png"> Unboxing  <span class="badge badge-warning"></span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/subscriptions">
+                     <img class="img-fluid" alt="" src="img/s3.png"> Product / Service
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+         <div id="content-wrapper">
+            <div class="container-fluid pb-0">
+               <div class="video-block-right-list section-padding">
+                  <div class="row mb-4">
+                     {% for video in videos %}
+                        {% if video['id'] == videoId %}
+                        <div class="col-md-8">
+                             <div class="single-video">
+                                    <iframe width="100%" height="315" src="{{ video['video_url'] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                             </div>
+                        </div>
+                        {% end if %}
+                     {% end %}
+                  <div class="col-md-4">
+                        <div class="video-slider-right-list">
+                           <div>
+                              <h6>Recommended videos by similar user</h6>
+                           </div>
+                           {% for video in recommended_videos %}
+                                 <div class="video-card video-card-list">
+                                    <div class="video-card-image">
+                                       <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                                       <a class="play-icon" href="/VideoPage?video_id={{ video['id'] }}"><i class="fas fa-play-circle"></i></a>
+                                       <a>
+                                           <img class="img-fluid" src="{{ video['video_img_url'] }}" alt="">
+                                       </a>
+                                       <div class="time">3:50</div>
+                                    </div>
+                                    <div class="video-card-body">
+                                       <div class="btn-group float-right right-action">
+                                          <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp; Close</a>
+                                          </div>
+                                       </div>
+                                       <div class="video-title">
+                                          <a href="#">{{ video['video_title'] }}</a>
+                                       </div>
+                                       <div class="video-page text-success">
+                                          Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                                       </div>
+                                       <div class="video-view">
+                                          1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                                       </div>
+                                    </div>
+                                 </div>
+                           {% end for %}
+                        </div>
+                  </div>
+                     {% for video in videos %}
+                        {% if video['id'] == videoId %}
+                        <div class="reviews-members-footer">
+                           <a href="#" class="total-like like-btn" data-type="like" data-videoid="{{ videoId }}" ><i class="fas fa-thumbs-up"></i>{{ video['likes'] }}</a>
+                           <a href="#" class="total-like dislike-btn" data-type="dislike" data-videoid="{{ videoId }}"><i class="fas fa-thumbs-down"></i>{{ video['dislike'] }}</a>
+                           <a href="#" class="total-like favorite-btn" data-type="favorite" data-videoid="{{ videoId }}"><i class="fas fa-heart"></i>not favorited </a>
+                        </div>
+                        {% end if %}
+                     {% end for %}
+                     <script>
+                        $(document).ready(function() {
+                            $(".like-btn, .dislike-btn, .favorite-btn").click(function(event) {
+                                event.preventDefault();
+
+                                var likeType = $(this).data('type');
+                                var videoId = $(this).data('videoid'); // 获取存储在 data-videoid 属性中的视频 ID
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/VideoLike',
+                                    data: {
+                                        type: likeType,
+                                        "video-id": videoId
+                                    },
+                                    success: function(data) {
+                                          //改为json格式
+                                        data = JSON.parse(data);
+                                        if (likeType === 'like') {
+                                            $('.like-btn').html('<i class="fas fa-thumbs-up"></i>' + data.likes);
+                                        } else if (likeType === 'dislike') {
+                                            $('.dislike-btn').html('<i class="fas fa-thumbs-down"></i>' + data.dislike);
+                                        }
+                                        else if (likeType === 'favorite') {
+                                            $('.favorite-btn').html('<i class="fas fa-heart"></i>' + data.favorite);
+                                        }
+                                    },
+                                    error: function() {
+                                        // 处理请求错误的逻辑
+                                    }
+                                });
+                            });
+                        });
+                        </script>
+                  </div>
+               </div>
+               <div class="video-block section-padding">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <div class="single-video-left">
+                           {% for video in videos %}
+                           {% if video['id'] == videoId %}
+                           <div class="single-video-title box mb-3">
+                              <h2><a href="#">{{ video['video_description'] }}</a></h2>
+                              <p class="mb-0"><i class="fas fa-eye"></i> 2,729,347 views</p>
+                           </div>
+<!--                           <div class="single-video-author box mb-3">-->
+<!--                              <div class="float-right"><button class="btn btn-danger" type="button">Subscribe <strong>1.4M</strong></button> <button class="btn btn btn-outline-danger" type="button"><i class="fas fa-bell"></i></button></div>-->
+<!--                              <img class="img-fluid" src="img/s4.png" alt="">-->
+<!--                              <p><a href="#"><strong>Osahan Channel</strong></a> <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></span></p>-->
+<!--                              <small>Published on Aug 10, 2018</small>-->
+<!--                           </div>-->
+                           <div class="single-video-info-content box mb-3">
+                              <h6>Cast:</h6>
+                              <p>None</p>
+                              <h6>Category :</h6>
+                              <p>{{ video['channel_id'] }}</p>
+                              <h6>About :</h6>
+                              <p>{{ video['video_description'] }}</p>
+                              <h6>Tags :</h6>
+                              <p class="tags mb-0">
+                                 {% for video_tag in video_tags %}
+                                    <span><a href="#">{{ video_tag['tag'] }}</a></span>
+                                 {% end for %}
+                              </p>
+                           </div>
+                           {% end if %}
+                           {% end for %}
+                           <div class="box mb-3 single-video-comment-tabs">
+                              <ul class="nav nav-tabs" role="tablist">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" id="retro-comments-tab" data-toggle="tab" href="#retro-comments" role="tab" aria-controls="retro" aria-selected="false">vidoe Comments</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" id="disqus-comments-tab" data-toggle="tab" href="#disqus-comments" role="tab" aria-controls="disqus" aria-selected="true">talk with ChatGpt</a>
+                                 </li>
+                              </ul>
+                              <div class="tab-content">
+                                 <div class="tab-pane fade" id="disqus-comments" role="tabpanel" aria-labelledby="disqus-comments-tab">
+                                    <div class="reviews-members pt-0">
+                                       <div class="media">
+                                          <a href="#"><img class="mr-3" src="img/s1.png" alt="Generic placeholder image"></a>
+                                          <div class="media-body">
+                                             <div class="form-members-body">
+                                                 <div class="message-container" id="message-container">
+                                                     <!-- Chat messages will be displayed here -->
+                                                 </div>
+                                                 <form class="form-control" id="user-input-form"  onsubmit="submitForm(event)">
+                                                     <input type="text" id="user-input" name="user-input" placeholder="Type your message..." style="width: 100%;">
+                                                     <input type="hidden" id="video_id" name="video_id" value= "{{ videoId }}" > <!-- 添加隐藏的 input 元素 -->
+                                                     <input type="submit" value="Send">
+                                                 </form>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                    <script>
+                                        function submitForm(event) {
+                                            event.preventDefault();
+                                            var userInput = document.getElementById("user-input").value;
+                                            var video_id = document.getElementById("video_id").value; // 获取视频ID
+                                            displayUserMessage("you：" + userInput);
+                                            // 这里你可以将用户输入的数据发送到后台进行处理
+                                            // 然后使用返回的数据调用 displayChatGPTMessage 函数显示 ChatGPT 的回答
+                                            // 发送异步请求到后端处理用户输入
+                                             var xhr = new XMLHttpRequest();
+                                             xhr.open("POST", "/VideoPage", true);
+                                             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                             xhr.onreadystatechange = function () {
+                                                 if (xhr.readyState === 4 && xhr.status === 200) {
+                                                     // 接收到后端返回的回复并显示在页面上
+                                                     var chatGPTResponse = xhr.responseText;
+                                                     displayChatGPTMessage("ChatGpt：" + chatGPTResponse);
+                                                 }
+                                             };
+                                             xhr.send("user-input=" + encodeURIComponent(userInput) + "&video-id=" + encodeURIComponent(video_id));
+                                            // 例如：displayChatGPTMessage("ChatGPT's response");
+                                            document.getElementById("user-input").value = ""; // 清空输入框
+                                        }
+
+                                        function displayUserMessage(message) {
+                                            var messageContainer = document.getElementById("message-container");
+                                            var userMessageElement = document.createElement("div");
+                                            userMessageElement.classList.add("message", "user-message");
+                                            userMessageElement.textContent = message;
+                                            messageContainer.appendChild(userMessageElement);
+                                        }
+
+                                        function displayChatGPTMessage(message) {
+                                            var messageContainer = document.getElementById("message-container");
+                                            var chatgptMessageElement = document.createElement("div");
+                                            chatgptMessageElement.classList.add("message", "chatgpt-message");
+                                            chatgptMessageElement.textContent = message;
+                                            messageContainer.appendChild(chatgptMessageElement);
+                                        }
+
+                                        // 示例：手动调用 displayChatGPTMessage 来显示 ChatGPT 的回答
+                                        // displayChatGPTMessage("Hello! How can I help you today?");
+                                    </script>
+
+                                 </div>
+                                 <div class="tab-pane fade" id="facebook-comments" role="tabpanel" aria-labelledby="facebook-comments-tab">
+                                    <h1>Soon...</h1>
+                                 </div>
+                                 <div class="tab-pane fade show active" id="retro-comments" role="tabpanel" aria-labelledby="retro-comments-tab">
+                                    <div class="reviews-members pt-0">
+                                        <div class="media">
+                                            <a href="#"><img class="mr-3" src="img/s1.png" alt="Generic placeholder image"></a>
+                                            <div class="media-body">
+                                                <div class="form-members-body">
+                                                    <textarea id="commentInput" rows="1" placeholder="Add a public comment..." class="form-control"></textarea>
+                                                </div>
+                                                <div class="form-members-footer text-right mt-2">
+                                                    <b id="commentCount" class="float-left">12,725 Comments</b>
+                                                    <button id="cancelBtn" class="btn btn-outline-danger btn-sm" type="button">CANCEL</button>
+                                                    <button id="commentBtn" class="btn btn-danger btn-sm" type="button">COMMENT</button>
+                                                    <input type="hidden" id="videoId" name="videoId" value="{{ videoId }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Comment List -->
+                                    <div id="commentList" class="mt-4">
+                                        <!-- Comments will be displayed here -->
+                                    </div>
+
+                                    <script>
+                                        // 获取评论输入框、评论按钮、取消按钮和评论数量元素
+                                        var commentInput = document.getElementById('commentInput');
+                                        var commentBtn = document.getElementById('commentBtn');
+                                        var cancelBtn = document.getElementById('cancelBtn');
+                                        var commentCount = document.getElementById('commentCount');
+                                        var commentList = document.getElementById('commentList');
+                                        var videoIdInput = document.getElementById('videoId');
+
+                                        // 添加点击事件处理程序
+                                        commentBtn.addEventListener('click', function() {
+                                           var commentText = commentInput.value;
+                                           var videoId = videoIdInput.value; // 获取videoId的值
+                                           if (commentText.trim() !== '') {
+                                               var xhr = new XMLHttpRequest();
+                                               xhr.open("POST", "/comments", true);
+                                               xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                               xhr.onreadystatechange = function() {
+                                                   if (xhr.readyState === 4 && xhr.status === 200) {
+                                                       // 请求成功后，更新评论数量和清空评论输入框
+                                                       // 添加新的评论
+                                                       addComment(commentText);
+                                                       commentInput.value = '';
+                                                   }
+                                               };
+                                               // 将video_id一起发送到后端
+                                               xhr.send("comment=" + encodeURIComponent(commentText) + "&videoId=" + encodeURIComponent(videoId));
+                                           }
+                                       });
+
+                                        cancelBtn.addEventListener('click', function() {
+                                            // 清空评论输入框
+                                            commentInput.value = '';
+                                        });
+
+                                        // 添加新的评论
+                                        function addComment(commentText) {
+                                            // 创建一个新的评论元素
+                                            var newComment = document.createElement('div');
+                                            newComment.classList.add('media', 'mt-3');
+                                            newComment.innerHTML = `
+                                                <div class="reviews-members pt-0">
+                                                   <div class="media">
+                                                      <a href="#"><img class="mr-3" src="img/s1.png" alt="Generic placeholder image"></a>
+                                                      <div class="media-body">
+                                                         <p class="card-text">${commentText}</p>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                            `;
+                                            // 将评论添加到评论列表中
+                                            commentList.appendChild(newComment);
+                                            // 更新评论数量
+                                            updateCommentCount();
+                                        }
+
+                                        // 更新评论数量
+                                        function updateCommentCount() {
+                                            // 假设已经成功提交评论，并且评论数量加1
+                                            var currentCount = parseInt(commentCount.innerText.replace(',', ''), 10);
+                                            var newCount = currentCount + 1;
+                                            commentCount.innerText = newCount.toLocaleString() + ' Comments';
+                                        }
+                                    </script>
+                                    <script>
+                                        // 获取评论列表元素
+                                        var commentList = document.getElementById('commentList');
+
+                                        // 页面加载时获取评论数据
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            var videoId = "{{ videoId }}"; // 假设视频ID存储在模板变量中
+
+                                            // 创建一个新的 XMLHttpRequest 对象
+                                            var xhr = new XMLHttpRequest();
+
+                                            // 设置请求参数
+                                            xhr.open('GET', '/comments?video_id=' + videoId, true);
+
+                                            // 定义响应处理函数
+                                            xhr.onload = function() {
+                                                if (xhr.status >= 200 && xhr.status < 300) {
+                                                    // 将响应文本解析为 JSON 格式
+                                                    console.log('Raw response:', xhr.responseText);
+                                                    var comments = JSON.parse(xhr.responseText);
+
+
+                                                    console.log(videoId);
+                                                    // 成功获取评论数据后，将其显示在页面上
+                                                    comments.forEach(comment => {
+                                                        var commentElement = createCommentElement(comment);
+                                                        commentList.appendChild(commentElement);
+                                                    });
+                                                } else {
+                                                    console.error('Error fetching comments:', xhr.statusText);
+                                                }
+                                            };
+
+                                            // 发送请求
+                                            xhr.send();
+                                        });
+
+                                        // 创建单个评论元素
+                                        function createCommentElement(comment) {
+                                            var commentDiv = document.createElement('div');
+                                            commentDiv.classList.add('media', 'mt-3');
+                                            commentDiv.innerHTML = `
+                                                <div class="reviews-members pt-0">
+                                                    <div class="media">
+                                                        <a href="#"><img class="mr-3" src="img/s1.png" alt="Generic placeholder image"></a>
+                                                        <div class="media-body">
+                                                            <p class="card-text">${comment.comments}</p> <!-- 假设评论文本存储在 comment.text 中 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `;
+                                            return commentDiv;
+                                        }
+                                    </script>
+
+
+
+<!--                                    <div class="reviews-members">-->
+<!--                                       <div class="media">-->
+<!--                                          <a href="#"><img alt="Generic placeholder image" src="img/s3.png" class="mr-3"></a>-->
+<!--                                          <div class="media-body">-->
+<!--                                             <div class="reviews-members-header">-->
+<!--                                                <h6 class="mb-1"><a href="#" class="text-black">Gurdeep Osahan </a> <small class="text-gray">2 months ago</small></h6>-->
+<!--                                             </div>-->
+<!--                                             <div class="reviews-members-body">-->
+<!--                                                <p>Was here impromptu in their first week, reacthe last order. Even though they had Chefs in their open kitchen they weren’t flexible to dish out few more items.</p>-->
+<!--                                             </div>-->
+<!--                                             <div class="reviews-members-footer">-->
+<!--                                                <a href="#" class="total-like"><i class="fas fa-thumbs-up"></i> 123</a> <a href="#" class="total-like"><i class="fas fa-thumbs-down"></i> 02</a>-->
+<!--                                                <span class="total-like-user-main ml-2" dir="rtl">-->
+<!--                                                <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/s5.png" class="total-like-user"></a>-->
+<!--                                                <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/s6.png" class="total-like-user"></a>-->
+<!--                                                <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/s7.png" class="total-like-user"></a>-->
+<!--                                                <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/s8.png" class="total-like-user"></a>-->
+<!--                                                </span>-->
+<!--                                             </div>-->
+<!--                                          </div>-->
+<!--                                       </div>-->
+<!--                                    </div>-->
+
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="single-video-right">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="adblock">
+                                    <div class="img">
+                                       Google AdSense<br>
+                                       336 x 280
+                                    </div>
+                                 </div>
+                                 <div class="main-title">
+                                    <div class="btn-group float-right right-action">
+                                       <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                       </a>
+                                       <div class="dropdown-menu dropdown-menu-right">
+                                          <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                                          <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
+                                          <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp; Close</a>
+                                       </div>
+                                    </div>
+                                    <h6>Recommended videos by video tag</h6>
+                                 </div>
+                              </div>
+                              <div class="col-md-12">
+                                 {% for video in recommended_by_tag_videos %}
+                                 <div class="video-card video-card-list">
+                                    <div class="video-card-image">
+                                       <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                                       <a class="play-icon" href="/VideoPage?video_id={{ video['id'] }}"><i class="fas fa-play-circle"></i></a>
+                                       <a>
+                                           <img class="img-fluid" src="{{ video['video_img_url'] }}" alt="">
+                                       </a>
+                                       <div class="time">3:50</div>
+                                    </div>
+                                    <div class="video-card-body">
+                                       <div class="btn-group float-right right-action">
+                                          <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
+                                             <a class="dropdown-item" href="#"><i class="fas fa-fw fa-times-circle"></i> &nbsp; Close</a>
+                                          </div>
+                                       </div>
+                                       <div class="video-title">
+                                          <a href="#">{{ video['video_title'] }}</a>
+                                       </div>
+                                       <div class="video-page text-success">
+                                          Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                                       </div>
+                                       <div class="video-view">
+                                          1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                                       </div>
+                                    </div>
+                                 </div>
+                                 {% end for %}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer">
+               <div class="container">
+                  <div class="row no-gutters">
+                     <div class="col-lg-6 col-sm-6">
+                        <p class="mt-1 mb-0">&copy; Copyright 2018 <strong class="text-dark">Vidoe</strong>. All Rights <a href="http://www.bootstrapmb.com">Reserved </a><br>
+                           <small class="mt-0 mb-0">Made with <i class="fas fa-heart text-danger"></i> by <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
+                           </small>
+                        </p>
+                     </div>
+                     <div class="col-lg-6 col-sm-6 text-right">
+                        <div class="app">
+                           <a href="#"><img alt="" src="img/google.png"></a>
+                           <a href="#"><img alt="" src="img/apple.png"></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+         </div>
+         <!-- /.content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+               </div>
+               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/login">Logout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Bootstrap core JavaScript-->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Owl Carousel -->
+      <script src="vendor/owl-carousel/owl.carousel.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="js/custom.js"></script>
+   </body>
+</html>
